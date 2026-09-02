@@ -2,7 +2,7 @@
 
 A deep learning-based image classification system that detects whether a person is **wearing a face mask or not**. The project uses **EfficientNetB0 transfer learning** with TensorFlow/Keras and provides an interactive web interface using **Streamlit**.
 
-🔗 **Live Demo:** [Add your Streamlit Cloud link here](#)
+🔗 **Live Demo:** [Add your Streamlit Cloud link here](https://face-mask-detection-usp8a2crtegvtnqkdzonnr.streamlit.app/)
 
 ---
 
