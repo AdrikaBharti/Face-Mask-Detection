@@ -80,7 +80,7 @@ Softmax
      │
      ▼
 WithMask / WithoutMask
-
+```
 ### Model Details
 
 | Component                | Details                                              |
