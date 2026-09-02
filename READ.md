@@ -1,6 +1,3 @@
-Yes — here is the **full `README.md` code only**, ready to copy into your GitHub `README.md` file:
-
-````markdown
 # 😷 Face Mask Detection
 
 A deep learning-based image classification system that detects whether a person is **wearing a face mask or not**. The project uses **EfficientNetB0 transfer learning** with TensorFlow/Keras and provides an interactive web interface using **Streamlit**.
@@ -83,7 +80,6 @@ Softmax
      │
      ▼
 WithMask / WithoutMask
-````
 
 ### Model Details
 
@@ -219,7 +215,6 @@ Prediction: WithoutMask
 
 ### Development Tools
 
-* Jupyter Notebook
 * Git
 * GitHub
 
@@ -234,7 +229,7 @@ Prediction: WithoutMask
 ```text
 Face--Mask-Detection_1/
 │
-├── train_model.ipynb
+├── train_model.py
 │   └── Model training and evaluation
 │
 ├── face_mask_model.h5
@@ -253,6 +248,17 @@ Face--Mask-Detection_1/
 │   ├── home.png
 │   └── prediction.png
 │
+│── charts/
+│   ├── bar_chart.png
+│   └── training_history.png
+│   ├── sample_images.png
+│   └── confusion_matrix.png
+├   ├── heatmap.png
+│   └── histogram.png
+│   ├── piechart.png
+│   └── classfication_report.txt
+│
+|
 └── README.md
 ```
 
@@ -260,11 +266,10 @@ Face--Mask-Detection_1/
 
 | File                   | Description                             |
 | ---------------------- | --------------------------------------- |
-| `train_model.ipynb`    | Model training, evaluation and analysis |
+| `train_model.py`    | Model training, evaluation and analysis |
 | `face_mask_model.h5`   | Saved trained model                     |
 | `app.py`               | Streamlit application for prediction    |
 | `requirements.txt`     | Required Python dependencies            |
-| `Project_document.pdf` | Detailed project documentation          |
 | `screenshots/`         | Application screenshots                 |
 | `README.md`            | Project documentation                   |
 
@@ -318,7 +323,7 @@ Upload a face image to get the mask detection prediction.
 
 ![Face Mask Detection Prediction](screenshots/prediction.png)
 
-> Make sure the `screenshots` folder exists in your repository and contains the corresponding images.
+
 
 ---
 
@@ -326,7 +331,7 @@ Upload a face image to get the mask detection prediction.
 
 🚀 **Streamlit Application:** [Click here to try the live demo](#)
 
-> Replace `#` with your actual Streamlit Cloud deployment URL.
+
 
 ---
 
@@ -369,24 +374,3 @@ Upload a face image to get the mask detection prediction.
 This project is created for **educational and learning purposes**.
 
 ````
-
-**Important:** Replace only these parts with your actual details:
-
-```markdown
-[Add your Streamlit Cloud link here](#)
-````
-
-and
-
-```markdown
-[Click here to try the live demo](#)
-```
-
-Also change:
-
-```text
-screenshots/home.png
-screenshots/prediction.png
-```
-
-if your screenshot filenames are different.
