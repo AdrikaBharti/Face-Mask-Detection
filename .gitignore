@@ -19,8 +19,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Model files (optional)
-*.h5
+
 
 # Dataset (recommended if it is large)
 /Face Mask Dataset/
