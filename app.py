@@ -7,7 +7,7 @@ from tensorflow.keras.applications.efficientnet import preprocess_input
 
 # Get absolute path to model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "face_mask.h5")
+MODEL_PATH = os.path.join(BASE_DIR, "face_mask_model.h5")
 
 # -----------------------------
 # Page Configuration
