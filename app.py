@@ -5,6 +5,13 @@ from PIL import Image
 import streamlit as st
 from tensorflow.keras.applications.efficientnet import preprocess_input
 
+# Get the directory where app.py lives
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "face_mask.h5")
+
+# Load the model using the dynamic path
+model = tf.keras.models.load_model(MODEL_PATH)
+
 # -----------------------------
 # Page Configuration
 # -----------------------------
