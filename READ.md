@@ -373,4 +373,3 @@ Upload a face image to get the mask detection prediction.
 
 This project is created for **educational and learning purposes**.
 
-````
