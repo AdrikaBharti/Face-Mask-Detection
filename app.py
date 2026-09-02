@@ -83,7 +83,7 @@ class_labels = ["WithMask", "WithoutMask"]
 # Sidebar
 # -----------------------------
 with st.sidebar:
-    st.image("https://img.icons8.com/color/96/medical-mask.png", width=80)
+   
     st.title("About App")
     st.markdown("""
     This application utilizes an **EfficientNetB0** deep learning model trained to detect whether individuals are wearing face masks.
