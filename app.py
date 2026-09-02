@@ -5,12 +5,9 @@ from PIL import Image
 import streamlit as st
 from tensorflow.keras.applications.efficientnet import preprocess_input
 
-# Get the directory where app.py lives
+# Get absolute path to model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "face_mask.h5")
-
-# Load the model using the dynamic path
-model = tf.keras.models.load_model(MODEL_PATH)
 
 # -----------------------------
 # Page Configuration
@@ -28,8 +25,6 @@ st.markdown("""
     .stApp {
         background-color: #F8FAFC;
     }
-    
-    /* Extra Large Titles */
     .hero-title {
         font-size: 4rem !important;
         font-weight: 900 !important;
@@ -43,16 +38,12 @@ st.markdown("""
         text-align: center;
         margin-bottom: 2.5rem;
     }
-    
-    /* Larger Section Headers */
     .section-header {
         font-size: 1.8rem !important;
         font-weight: 700 !important;
         color: #1E293B;
         margin-bottom: 1rem;
     }
-
-    /* Larger Metrics & Alerts */
     [data-testid="stMetricValue"] {
         font-size: 2.8rem !important;
         font-weight: 800 !important;
@@ -61,8 +52,6 @@ st.markdown("""
         font-size: 1.3rem !important;
         font-weight: 600 !important;
     }
-    
-    /* Prominent Upload Area */
     div[data-testid="stFileUploader"] {
         border: 2px dashed #0EA5E9;
         border-radius: 12px;
@@ -77,11 +66,10 @@ st.markdown("""
 # -----------------------------
 @st.cache_resource
 def load_face_mask_model():
-    model_path = "face_mask_model.h5"
-    if not os.path.exists(model_path):
-        st.error(f"Model file '{model_path}' not found in root directory!")
+    if not os.path.exists(MODEL_PATH):
+        st.error(f"❌ Model file 'face_mask.h5' not found in workspace path: {MODEL_PATH}")
         return None
-    return tf.keras.models.load_model(model_path, compile=False)
+    return tf.keras.models.load_model(MODEL_PATH, compile=False)
 
 model = load_face_mask_model()
 class_labels = ["WithMask", "WithoutMask"]
@@ -90,7 +78,6 @@ class_labels = ["WithMask", "WithoutMask"]
 # Sidebar
 # -----------------------------
 with st.sidebar:
-   
     st.title("About App")
     st.markdown("""
     This application utilizes an **EfficientNetB0** deep learning model trained to detect whether individuals are wearing face masks.
@@ -103,7 +90,7 @@ with st.sidebar:
     st.info("💡 **Tip:** Upload clear, well-lit portraits for highest accuracy.")
 
 # -----------------------------
-# Header Section (Enlarged)
+# Header Section
 # -----------------------------
 st.markdown('<p class="hero-title">😷 Face Mask Detector</p>', unsafe_allow_html=True)
 st.markdown('<p class="hero-subtitle">Real-time mask detection powered by Deep Learning</p>', unsafe_allow_html=True)
@@ -111,7 +98,6 @@ st.markdown('<p class="hero-subtitle">Real-time mask detection powered by Deep L
 # -----------------------------
 # Main Content Grid
 # -----------------------------
-# Column 1 = Upload & Compact Image, Column 2 = Expanded Results
 col1, col2 = st.columns([1, 1.3], gap="large")
 
 with col1:
@@ -120,8 +106,6 @@ with col1:
 
     if uploaded_file is not None:
         img = Image.open(uploaded_file).convert("RGB")
-        
-        # Constrain image width strictly to 280px to keep it compact
         _, img_center, _ = st.columns([1, 2, 1])
         with img_center:
             st.image(img, caption="Uploaded Image", width=280)
@@ -132,7 +116,7 @@ with col2:
     if uploaded_file is None:
         st.info("👈 Upload an image on the left to see prediction analytics.")
     elif model is None:
-        st.error("Model couldn't be loaded. Please check your workspace files.")
+        st.error("Model couldn't be loaded. Please ensure 'face_mask.h5' is uploaded to your GitHub repository root folder.")
     else:
         # Preprocessing
         img_resized = img.resize((224, 224))
